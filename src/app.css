@@ -1,0 +1,22 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+@import "@fontsource-variable/jetbrains-mono";
+
+@layer base {
+  html {
+    @apply scroll-smooth font-mono antialiased;
+  }
+  body {
+    @apply bg-zinc-900 text-fuchsia-50;
+  }
+  ::selection {
+    @apply bg-fuchsia-500/20;
+  }
+}
+
+@layer utilities {
+  .smooth {
+    @apply transition-all duration-500 ease-in-out;
+  }
+}
