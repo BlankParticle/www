@@ -24,6 +24,9 @@
       <span class="text-pretty pt-1 text-sm font-semibold text-fuchsia-100/50">
         {new Date().getFullYear() - 2005} yo | Student | Software Developer
       </span>
+      <span class="text-pretty pt-1 text-sm font-semibold text-fuchsia-100/80"
+        >email me at hello@blankparticle.in
+      </span>
     </div>
     <div class="p-1 py-5">
       <img
