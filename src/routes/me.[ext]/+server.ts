@@ -8,7 +8,7 @@ const cacheProxy = (url: string) =>
       new Response(res.body, {
         headers: {
           "Content-Type": "image/png",
-          "Cache-Control": dev ? "no-cache" : "public, max-age=86400",
+          "Cache-Control": dev ? "no-cache" : "public, max-age=86400, s-maxage=86400",
         },
       }),
   );
