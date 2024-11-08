@@ -131,7 +131,7 @@
           class="smooth underline decoration-dotted hover:text-fuchsia-500/90 hover:text-glow-fuchsia-700"
           target="_blank"
         >
-          ⚡ Powered by SvelteKit
+          🔌 Powered by SvelteKit
         </a>
       </div>
     </div>
