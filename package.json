@@ -1,6 +1,6 @@
 {
   "name": "@blankparticle/www",
-  "version": "0.0.0-dev",
+  "version": "0.0.1",
   "type": "module",
   "scripts": {
     "dev": "vite dev",
