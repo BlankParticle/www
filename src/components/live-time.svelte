@@ -4,7 +4,7 @@
 
   let date = $state(new Date());
   let formattedTime = $derived.by(() =>
-    Intl.DateTimeFormat("en-IN", { timeZone: "Asia/Kolkata", timeStyle: "medium", hourCycle: "h24" }).format(date),
+    Intl.DateTimeFormat("en-IN", { timeZone: "Asia/Kolkata", timeStyle: "medium", hourCycle: "h23" }).format(date),
   );
 
   let isDay = $derived.by(() => {
