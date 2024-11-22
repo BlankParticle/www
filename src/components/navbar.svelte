@@ -1,7 +1,3 @@
-<script>
-  import BlinkingCursor from "./blinking-cursor.svelte";
-</script>
-
 <header class="flex w-full">
   <nav class="py-4 md:py-6">
     <div class="text-lg font-bold text-fuchsia-400/90 smooth hover:text-fuchsia-500">
@@ -10,7 +6,7 @@
       >
         web@blankparticle.in
       </span>
-      ~ <BlinkingCursor />
+      ~ <span class="mx-[2px] inline-block h-4 w-[0.5px] translate-y-[2px] animate-blink bg-current"></span>
     </div>
   </nav>
 </header>

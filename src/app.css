@@ -4,6 +4,12 @@
 @plugin "tailwindcss-spring";
 @plugin "./lib/tailwind-plugin-glow.ts";
 
+@theme {
+  --font-mono: "JetBrains Mono Variable", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+    "Courier New", monospace;
+  --animate-blink: blink 1s infinite;
+}
+
 @layer base {
   html {
     @apply scroll-smooth font-mono antialiased;
@@ -13,6 +19,15 @@
   }
   ::selection {
     @apply bg-fuchsia-500/20;
+  }
+  @keyframes blink {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0;
+    }
   }
 }
 
