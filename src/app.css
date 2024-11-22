@@ -1,7 +1,8 @@
-@import "tailwindcss/base";
-@import "tailwindcss/components";
-@import "tailwindcss/utilities";
+@import "tailwindcss";
 @import "@fontsource-variable/jetbrains-mono";
+
+@plugin "tailwindcss-spring";
+@plugin "./lib/tailwind-plugin-glow.ts";
 
 @layer base {
   html {
@@ -15,8 +16,6 @@
   }
 }
 
-@layer utilities {
-  .smooth {
-    @apply transition-all duration-500 ease-in-out;
-  }
+@utility smooth {
+  @apply transition-all duration-500 ease-in-out;
 }

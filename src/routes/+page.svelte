@@ -18,18 +18,18 @@
     <div class="flex flex-col text-xl">
       <span class="font-semibold">Hello,</span>
       <span>I'm Rahul Mishra</span>
-      <span class="text-pretty text-sm font-bold text-fuchsia-100/50"
-        >also known as <a href="/gh" class="smooth underline decoration-dotted hover:text-fuchsia-500/90"
+      <span class="text-sm font-bold text-pretty text-fuchsia-100/50"
+        >also known as <a href="/gh" class="underline decoration-dotted smooth hover:text-fuchsia-500/90"
           >@blankparticle</a
         > online</span
       >
-      <span class="text-pretty pt-1 text-sm font-semibold text-fuchsia-100/50">
+      <span class="pt-1 text-sm font-semibold text-pretty text-fuchsia-100/50">
         {new Date().getFullYear() - 2005} yo | Student | Software Developer
       </span>
-      <span class="text-pretty pt-1 text-sm font-semibold text-fuchsia-100/80">
+      <span class="pt-1 text-sm font-semibold text-pretty text-fuchsia-100/80">
         email me at
         <CopyButton text="hello@blankparticle.in">
-          <span class="cursor-pointer select-all underline decoration-dotted">hello@blankparticle.in</span>
+          <span class="cursor-pointer underline decoration-dotted select-all">hello@blankparticle.in</span>
         </CopyButton>
       </span>
     </div>
@@ -37,7 +37,7 @@
       <img
         src="/me.png"
         alt="Current pfp of BlankParticle"
-        class="aspect-square size-20 -rotate-12 select-none drama-fuchsia-600/80 drama-20 spring-bounce-40 spring-duration-500 hover:rotate-0 hover:drama-5 md:size-32 md:drama-28"
+        class="drama-fuchsia-600/80 drama-20 spring-bounce-40 spring-duration-500 hover:drama-5 md:drama-28 aspect-square size-20 -rotate-12 select-none hover:rotate-0 md:size-32"
       />
     </div>
   </div>
@@ -48,7 +48,7 @@
       <CommandOutput>Welcome to BlankParticle!</CommandOutput>
       <CommandOutput>
         <span class="flex items-center gap-2">
-          <span class="text-fuchsia-500 text-glow-fuchsia-500"><Spinner interval={150} /></span>
+          <span class="text-glow-fuchsia-500 text-fuchsia-500"><Spinner interval={150} /></span>
           Time: <LiveTime /> (IST)
         </span>
       </CommandOutput>
@@ -59,12 +59,12 @@
         <div class="flex flex-col gap-3">
           {#each data.projects as project}
             <a
-              class="smooth flex flex-col gap-1 rounded-lg border border-slate-800 p-3 hover:border-fuchsia-500 hover:border-glow-fuchsia-600"
+              class="hover:border-glow-fuchsia-600 flex flex-col gap-1 rounded-lg border border-slate-800 p-3 smooth hover:border-fuchsia-500"
               href={project.url}
               target="_blank"
             >
               <span class="font-bold">{project.title}</span>
-              <span class="text-pretty text-sm font-semibold text-fuchsia-400">{project.description}</span>
+              <span class="text-sm font-semibold text-pretty text-fuchsia-400">{project.description}</span>
             </a>
           {/each}
         </div>
@@ -75,12 +75,12 @@
         <div class="flex flex-col gap-3">
           {#each data.writings as writing}
             <a
-              class="smooth flex flex-col gap-1 rounded-lg border border-slate-800 p-3 hover:border-fuchsia-500 hover:border-glow-fuchsia-600"
+              class="hover:border-glow-fuchsia-600 flex flex-col gap-1 rounded-lg border border-slate-800 p-3 smooth hover:border-fuchsia-500"
               href={writing.url}
               target="_blank"
             >
               <span class="font-bold">{writing.title}</span>
-              <span class="text-pretty text-sm font-semibold text-fuchsia-400">{writing.description}</span>
+              <span class="text-sm font-semibold text-pretty text-fuchsia-400">{writing.description}</span>
             </a>
           {/each}
         </div>
@@ -89,12 +89,12 @@
       <Command>cat ~/socials.json</Command>
       <CommandOutput>
         <div class="flex flex-wrap gap-2">
-          <span class="smooth rounded-lg border border-slate-800 p-2">
+          <span class="rounded-lg border border-slate-800 p-2 smooth">
             <span class="text-sm font-bold text-fuchsia-400">[</span>
           </span>
           {#each Object.entries(socials) as [link, name], i}
             <a
-              class="smooth rounded-lg border border-slate-800 p-2 hover:border-fuchsia-500 hover:border-glow-fuchsia-600"
+              class="hover:border-glow-fuchsia-600 rounded-lg border border-slate-800 p-2 smooth hover:border-fuchsia-500"
               href={`/${link}`}
               target="_blank"
             >
@@ -103,7 +103,7 @@
               >
             </a>
           {/each}
-          <span class="smooth rounded-lg border border-slate-800 p-2">
+          <span class="rounded-lg border border-slate-800 p-2 smooth">
             <span class="text-sm font-bold text-fuchsia-400">]</span>
           </span>
         </div>
@@ -119,7 +119,7 @@
       <div class="text-xs font-bold text-fuchsia-100/50">
         <a
           href="/gh/www"
-          class="smooth underline decoration-dotted hover:text-fuchsia-500/90 hover:text-glow-fuchsia-700"
+          class="hover:text-glow-fuchsia-700 underline decoration-dotted smooth hover:text-fuchsia-500/90"
           target="_blank"
         >
           Made with 💚 by BlankParticle
@@ -128,7 +128,7 @@
       <div class="text-xs font-bold text-fuchsia-100/50">
         <a
           href="https://svelte.dev"
-          class="smooth underline decoration-dotted hover:text-fuchsia-500/90 hover:text-glow-fuchsia-700"
+          class="hover:text-glow-fuchsia-700 underline decoration-dotted smooth hover:text-fuchsia-500/90"
           target="_blank"
         >
           🔌 Powered by SvelteKit

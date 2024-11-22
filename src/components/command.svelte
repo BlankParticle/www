@@ -4,6 +4,6 @@
   const { children }: { children: Snippet } = $props();
 </script>
 
-<div class="py-1 text-lime-200 text-glow-lime-500 before:content-['$_']">
+<div class="text-glow-lime-500 py-1 text-lime-200 before:content-['$_']">
   {@render children()}
 </div>

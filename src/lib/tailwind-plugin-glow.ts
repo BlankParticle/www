@@ -1,8 +1,4 @@
-import type { Config } from "tailwindcss";
-import { fontFamily } from "tailwindcss/defaultTheme";
 import plugin from "tailwindcss/plugin";
-import flattenColorPalette from "tailwindcss/lib/util/flattenColorPalette";
-import springPlugin from "tailwindcss-spring";
 
 const applyGlowStyles = plugin.withOptions(
   () =>
@@ -11,8 +7,7 @@ const applyGlowStyles = plugin.withOptions(
         {
           drama: (value) => ({
             "--tw-drop-shadow": `drop-shadow(0px 0px var(--drama-spread) ${value})`,
-            filter:
-              "var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)",
+            filter: "var(--tw-drop-shadow)",
           }),
           "border-glow": (value) => ({
             "border-color": value,
@@ -23,14 +18,14 @@ const applyGlowStyles = plugin.withOptions(
           }),
         },
         {
-          values: flattenColorPalette(theme("colors")),
+          values: theme("color"),
           type: "color",
         },
       ),
       matchUtilities(
         {
           drama: (spread) => {
-            const spreadNumber = Number(spread.replace("rem", ""));
+            const spreadNumber = Number(spread.replace("rem", "")) || 0;
             const blur =
               spreadNumber <= 0.25
                 ? `${spreadNumber * 15}rem`
@@ -45,21 +40,10 @@ const applyGlowStyles = plugin.withOptions(
           },
         },
         {
-          values: theme("margin"),
+          values: theme("spacing"),
         },
       )
     ),
 );
 
-export default {
-  darkMode: "class",
-  content: ["./src/**/*.{html,js,svelte,ts}"],
-  theme: {
-    extend: {
-      fontFamily: {
-        mono: ["JetBrains Mono Variable", ...fontFamily.mono],
-      },
-    },
-  },
-  plugins: [applyGlowStyles, springPlugin],
-} satisfies Config;
+export default applyGlowStyles;
