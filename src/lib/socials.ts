@@ -10,6 +10,7 @@ const redirectMap: Record<string, string> = {
   hashnode: "https://hashnode.com/@BlankParticle",
   devto: "https://dev.to/blankparticle",
   discord: "https://discordapp.com/users/1096392763144159252",
+  cal: "https://cal.com/blankparticle",
 };
 
 redirectMap.gh$ = redirectMap.github$;
