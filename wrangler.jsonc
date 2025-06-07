@@ -10,6 +10,6 @@
   },
   "route": {
     "custom_domain": true,
-    "pattern": "blankparticle.in",
+    "pattern": "blankparticle.com",
   },
 }

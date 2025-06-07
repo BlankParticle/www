@@ -52,7 +52,7 @@
 
   <div class="py-4">
     <Terminal>
-      <Command>ssh blankparticle.in</Command>
+      <Command>ssh blankparticle.com</Command>
       <CommandOutput>Welcome to BlankParticle!</CommandOutput>
       <CommandOutput>
         <span class="flex items-center gap-2">

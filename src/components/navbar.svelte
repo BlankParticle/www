@@ -4,7 +4,7 @@
       <span
         class="underline decoration-fuchsia-300/50 decoration-dotted underline-offset-2 smooth hover:decoration-fuchsia-500"
       >
-        web@blankparticle.in
+        web@blankparticle.com
       </span>
       ~ <span class="mx-[2px] inline-block h-4 w-[0.5px] translate-y-[2px] animate-blink bg-current"></span>
     </div>
