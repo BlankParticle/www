@@ -1,12 +1,14 @@
 <script>
   import CommandOutput from "../components/command-output.svelte";
   import Command from "../components/command.svelte";
-  import CopyButton from "../components/copy-button.svelte";
+  import Confirm from "../icons/confirm.svelte";
   import LiveTime from "../components/live-time.svelte";
   import Navbar from "../components/navbar.svelte";
   import Spinner from "../components/spinner.svelte";
   import Terminal from "../components/terminal.svelte";
   import { socials } from "../lib/socials";
+  const DOMAIN = "blankparticle.com";
+  let copied = $state(false);
   const { data } = $props();
 </script>
 
@@ -26,16 +28,27 @@
       <span class="pt-1 text-sm font-semibold text-pretty text-fuchsia-100/50">
         {new Date().getFullYear() - 2005} yo | Student | Software Developer
       </span>
-      <span class="pt-1 text-sm font-semibold text-pretty text-fuchsia-100/80">
-        email me at
-        <CopyButton text="hello@blankparticle.in">
-          <span class="cursor-pointer underline decoration-dotted select-all">hello@blankparticle.in</span>
-        </CopyButton>
-      </span>
-      <span class="py-2 text-sm font-semibold text-pretty">
+      <button
+        class="my-2 flex w-fit cursor-pointer items-center gap-1 text-lg font-bold text-fuchsia-500 underline decoration-dotted hover:text-glow-fuchsia-700"
+        onclick={() => {
+          navigator.clipboard.writeText(`hello@${DOMAIN}`).then(() => {
+            copied = true;
+            setTimeout(() => {
+              copied = false;
+            }, 2000);
+          });
+        }}
+      >
+        {#if copied}
+          Email copied!<Confirm />
+        {:else}
+          email me 📪
+        {/if}
+      </button>
+      <span class="py-1 text-sm font-semibold text-pretty">
         <a
           href="/cal"
-          class=" text-lg font-bold text-fuchsia-500 underline decoration-dotted hover:text-glow-fuchsia-700"
+          class="text-lg font-bold text-fuchsia-500 underline decoration-dotted hover:text-glow-fuchsia-700"
         >
           Book a call on cal.com
         </a>
