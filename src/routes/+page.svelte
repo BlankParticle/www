@@ -26,7 +26,12 @@
         > online</span
       >
       <span class="pt-1 text-sm font-semibold text-pretty text-fuchsia-100/50">
-        {new Date().getFullYear() - 2005} yo | Student | Software Developer
+        {new Date().getFullYear() - 2005} yo | Student | Software Developer at
+        <a
+          href="https://iterate.com"
+          class="underline decoration-dotted smooth hover:text-fuchsia-500/90"
+          target="_blank">Iterate</a
+        >
       </span>
       <button
         class="my-2 flex w-fit cursor-pointer items-center gap-1 text-lg font-bold text-fuchsia-500 underline decoration-dotted hover:text-glow-fuchsia-700"
@@ -86,22 +91,6 @@
             >
               <span class="font-bold">{project.title}</span>
               <span class="text-sm font-semibold text-pretty text-fuchsia-400">{project.description}</span>
-            </a>
-          {/each}
-        </div>
-      </CommandOutput>
-      <div class="py-3"></div>
-      <Command>ls ~/Writings</Command>
-      <CommandOutput>
-        <div class="flex flex-col gap-3">
-          {#each data.writings as writing}
-            <a
-              class="flex flex-col gap-1 rounded-lg border border-slate-800 p-3 smooth hover:border-glow-fuchsia-600 hover:border-fuchsia-500"
-              href={writing.url}
-              target="_blank"
-            >
-              <span class="font-bold">{writing.title}</span>
-              <span class="text-sm font-semibold text-pretty text-fuchsia-400">{writing.description}</span>
             </a>
           {/each}
         </div>

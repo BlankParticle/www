@@ -1,8 +1,12 @@
 import type { ServerLoad } from "@sveltejs/kit";
 
-// TODO: make this dynamic
 export const load: ServerLoad = () => {
   const projects = [
+    {
+      title: "safe-durable-objects",
+      description: "🔒 tRPC-style Safe RPC methods for Cloudflare Durable Objects",
+      url: "https://github.com/iterate-com/safe-durable-objects",
+    },
     {
       title: "tailwind-plugin-realtime-colors",
       description: "🧩 A Tailwind CSS plugin that allows you to load colors from URL of Realtime Colors",
@@ -20,18 +24,5 @@ export const load: ServerLoad = () => {
     },
   ];
 
-  const writings = [
-    {
-      title: "Creating a tailwind plugin shouldn't be that hard, right?",
-      description: "A guide to create a Tailwind CSS plugin",
-      url: "/blog/creating-a-tailwind-plugin-shouldnt-be-that-hard",
-    },
-    {
-      title: "Redirecting Your Domains using Cloudflare",
-      description: "Redirect your domains using Cloudflare",
-      url: "/blog/redirecting-your-domains-using-cloudflare",
-    },
-  ];
-
-  return { projects, writings };
+  return { projects };
 };
