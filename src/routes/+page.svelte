@@ -30,11 +30,14 @@
         <a
           href="https://iterate.com"
           class="underline decoration-dotted smooth hover:text-fuchsia-500/90"
-          target="_blank">Iterate</a
+          target="_blank"
+          rel="noopener noreferrer">Iterate</a
         >
       </span>
       <button
         class="my-2 flex w-fit cursor-pointer items-center gap-1 text-lg font-bold text-fuchsia-500 underline decoration-dotted hover:text-glow-fuchsia-700"
+        aria-live="polite"
+        aria-atomic="true"
         onclick={() => {
           navigator.clipboard.writeText(`hello@${DOMAIN}`).then(() => {
             copied = true;
@@ -45,7 +48,7 @@
         }}
       >
         {#if copied}
-          Email copied!<Confirm />
+          <span class="inline-flex items-center gap-1">Email copied!<Confirm /></span>
         {:else}
           email me 📪
         {/if}
@@ -88,6 +91,7 @@
               class="flex flex-col gap-1 rounded-lg border border-slate-800 p-3 smooth hover:border-glow-fuchsia-600 hover:border-fuchsia-500"
               href={project.url}
               target="_blank"
+              rel="noopener noreferrer"
             >
               <span class="font-bold">{project.title}</span>
               <span class="text-sm font-semibold text-pretty text-fuchsia-400">{project.description}</span>
@@ -107,6 +111,7 @@
               class="rounded-lg border border-slate-800 p-2 smooth hover:border-glow-fuchsia-600 hover:border-fuchsia-500"
               href={`/${link}`}
               target="_blank"
+              rel="noopener noreferrer"
             >
               <span class="text-sm font-bold text-fuchsia-400"
                 >"{name}"{i === Object.keys(socials).length - 1 ? "" : ","}</span
@@ -131,6 +136,7 @@
           href="/gh/www"
           class="underline decoration-dotted smooth hover:text-fuchsia-500/90 hover:text-glow-fuchsia-700"
           target="_blank"
+          rel="noopener noreferrer"
         >
           Made with 💚 by BlankParticle
         </a>
@@ -140,6 +146,7 @@
           href="https://svelte.dev"
           class="underline decoration-dotted smooth hover:text-fuchsia-500/90 hover:text-glow-fuchsia-700"
           target="_blank"
+          rel="noopener noreferrer"
         >
           🍀 Powered by SvelteKit
         </a>

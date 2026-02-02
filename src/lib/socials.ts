@@ -1,5 +1,5 @@
 const redirectMap: Record<string, string> = {
-  email: "mailto:hello@blankparticle.in",
+  email: "mailto:hello@blankparticle.com",
   github$: "https://github.com/BlankParticle",
   bsky: "https://bsky.app/profile/blankparticle.in",
   twitter: "https://twitter.com/blankparticle",
