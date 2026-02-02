@@ -14,7 +14,9 @@
     "lint": "prettier --check . && eslint ."
   },
   "devDependencies": {
-    "@fontsource-variable/jetbrains-mono": "^5.2.8",
+    "@fontsource/caveat": "^5.2.7",
+    "@fontsource/source-sans-3": "^5.2.7",
+    "@fontsource/stix-two-text": "^5.2.7",
     "@sveltejs/adapter-cloudflare": "^7.2.6",
     "@sveltejs/kit": "^2.50.1",
     "@sveltejs/vite-plugin-svelte": "^6.2.4",

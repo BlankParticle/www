@@ -1,24 +1,47 @@
 @import "tailwindcss";
-@import "@fontsource-variable/jetbrains-mono";
+@import "@fontsource/stix-two-text/400.css";
+@import "@fontsource/stix-two-text/600.css";
+@import "@fontsource/stix-two-text/700.css";
+@import "@fontsource/source-sans-3/400.css";
+@import "@fontsource/source-sans-3/600.css";
+@import "@fontsource/source-sans-3/700.css";
+@import "@fontsource/caveat/500.css";
 
 @plugin "tailwindcss-spring";
-@plugin "./lib/tailwind-plugin-glow.ts";
 
 @theme {
-  --font-mono: "JetBrains Mono Variable", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
-    "Courier New", monospace;
+  --font-display: "STIX Two Text", "Times New Roman", serif;
+  --font-body: "Source Sans 3", "Helvetica Neue", Arial, sans-serif;
+  --font-note: "Caveat", "Segoe Print", "Comic Sans MS", cursive;
   --animate-blink: blink 1s infinite;
 }
 
 @layer base {
   html {
-    @apply scroll-smooth font-mono antialiased;
+    @apply scroll-smooth antialiased;
+    font-family: var(--font-body);
+    color: var(--ink);
   }
   body {
-    @apply bg-zinc-900 text-fuchsia-50;
+    @apply text-[color:var(--ink)];
+    background-color: #efe6da;
+    background-image:
+      radial-gradient(circle at top left, rgba(230, 211, 177, 0.4), transparent 55%),
+      radial-gradient(circle at bottom right, rgba(125, 154, 124, 0.22), transparent 60%),
+      linear-gradient(180deg, rgba(239, 230, 218, 0.95), rgba(239, 230, 218, 0.9));
+    background-repeat: no-repeat;
+    background-size:
+      160% 160%,
+      160% 160%,
+      100% 100%;
+    background-position:
+      top left,
+      bottom right,
+      center;
+    min-height: 100vh;
   }
   ::selection {
-    @apply bg-fuchsia-500/20;
+    background-color: rgba(125, 154, 124, 0.25);
   }
   @keyframes blink {
     0%,
@@ -31,6 +54,126 @@
   }
 }
 
+@layer base {
+  :root {
+    --paper: #f7f0e8;
+    --paper-deep: #efe6da;
+    --ink: #2a2a2a;
+    --ink-muted: #6b645c;
+    --accent: #7d9a7c;
+    --accent-strong: #5f7d63;
+    --peach: #e6d3b1;
+    --line: rgba(42, 42, 42, 0.08);
+    --shadow: 0 30px 70px rgba(42, 42, 42, 0.18);
+  }
+}
+
 @utility smooth {
   @apply transition-all duration-500 ease-in-out;
+}
+
+@layer components {
+  .notebook-sheet {
+    position: relative;
+    background-color: var(--paper);
+    background-image: repeating-linear-gradient(
+      to bottom,
+      transparent 0,
+      transparent 26px,
+      var(--line) 27px,
+      var(--line) 28px
+    );
+    border: 1px solid rgba(42, 42, 42, 0.1);
+    border-radius: 32px;
+    box-shadow: var(--shadow);
+  }
+
+  .notebook-sheet::before {
+    content: "";
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: 72px;
+    background: rgba(125, 154, 124, 0.08);
+    border-right: 1px solid rgba(42, 42, 42, 0.12);
+    pointer-events: none;
+  }
+
+  .ink-label {
+    font-family: var(--font-note);
+    color: var(--ink-muted);
+    letter-spacing: 0.04em;
+  }
+
+  .ink-link {
+    color: var(--accent-strong);
+    text-decoration: underline;
+    text-decoration-style: dashed;
+    text-underline-offset: 4px;
+    text-decoration-thickness: 1.5px;
+  }
+
+  .summary-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--peach) 85%, #fff);
+    padding: 6px 14px;
+    font-weight: 600;
+  }
+
+  .polaroid {
+    position: relative;
+    background: #fff;
+    border: 1px solid rgba(42, 42, 42, 0.12);
+    border-radius: 18px;
+    padding: 14px 14px 20px;
+    box-shadow: 0 18px 40px rgba(42, 42, 42, 0.18);
+  }
+
+  .tape {
+    position: absolute;
+    width: 46px;
+    height: 16px;
+    background: rgba(230, 211, 177, 0.55);
+    border: 1px solid rgba(42, 42, 42, 0.08);
+    border-radius: 6px;
+    box-shadow: 0 6px 12px rgba(42, 42, 42, 0.15);
+  }
+
+  .tape-left {
+    top: -8px;
+    left: 12px;
+    transform: rotate(-4deg);
+  }
+
+  .tape-right {
+    top: -8px;
+    right: 10px;
+    transform: rotate(4deg);
+  }
+
+  .note-card {
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(42, 42, 42, 0.1);
+    border-radius: 20px;
+    box-shadow: 0 12px 24px rgba(42, 42, 42, 0.12);
+  }
+
+  .cta-primary {
+    background: var(--accent);
+    color: #f9f6f0;
+    border-radius: 999px;
+    padding: 10px 18px;
+    font-weight: 700;
+  }
+
+  .cta-secondary {
+    border: 1px solid rgba(42, 42, 42, 0.18);
+    border-radius: 999px;
+    padding: 10px 18px;
+    font-weight: 600;
+    color: var(--ink);
+    background: rgba(255, 255, 255, 0.6);
+  }
 }

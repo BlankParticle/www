@@ -1,156 +1,144 @@
 <script>
-  import CommandOutput from "../components/command-output.svelte";
-  import Command from "../components/command.svelte";
   import Confirm from "../icons/confirm.svelte";
   import LiveTime from "../components/live-time.svelte";
-  import Navbar from "../components/navbar.svelte";
-  import Spinner from "../components/spinner.svelte";
-  import Terminal from "../components/terminal.svelte";
   import { socials } from "../lib/socials";
   const DOMAIN = "blankparticle.com";
   let copied = $state(false);
   const { data } = $props();
+  const age = new Date().getFullYear() - 2005;
+
+  const copyEmail = async () => {
+    const email = `hello@${DOMAIN}`;
+    try {
+      if (navigator.clipboard && window.isSecureContext) {
+        await navigator.clipboard.writeText(email);
+      } else {
+        const input = document.createElement("textarea");
+        input.value = email;
+        input.setAttribute("readonly", "true");
+        input.style.position = "absolute";
+        input.style.left = "-9999px";
+        document.body.appendChild(input);
+        input.select();
+        document.execCommand("copy");
+        document.body.removeChild(input);
+      }
+      copied = true;
+      setTimeout(() => {
+        copied = false;
+      }, 2000);
+    } catch (error) {
+      copied = false;
+    }
+  };
 </script>
 
-<main class="mx-auto max-w-screen-md p-2">
-  <Navbar />
-  <Command>cat about-me.md</Command>
+<main class="mx-auto max-w-5xl px-4 py-10 sm:py-16">
+  <div class="notebook-sheet px-6 py-10 sm:px-12 sm:py-14">
+    <div class="relative z-10 flex flex-col gap-12 pl-16 sm:pl-20">
+      <header class="flex flex-col gap-10 md:flex-row md:items-start md:justify-between">
+        <div class="flex flex-col gap-4">
+          <span class="ink-label text-sm">blankparticle.com</span>
+          <div class="flex flex-col gap-2">
+            <span class="text-lg font-semibold text-[color:var(--ink-muted)]">Hello,</span>
+            <h1 class="text-4xl font-[var(--font-display)] sm:text-5xl">I'm Rahul Mishra</h1>
+            <p class="text-sm text-[color:var(--ink-muted)] italic">
+              also known as <a href="/gh" class="ink-link">@blankparticle</a> online
+            </p>
+          </div>
+          <p class="summary-pill text-sm text-[color:var(--ink)] sm:text-base">
+            {age} yo | Software Developer at
+            <a href="https://iterate.com" class="ink-link" target="_blank" rel="noopener noreferrer"> Iterate </a>
+          </p>
+          <div class="flex flex-wrap items-center gap-3 pt-2">
+            <button
+              type="button"
+              class="cta-primary smooth hover:scale-[1.02] hover:bg-[color:var(--accent-strong)]"
+              aria-live="polite"
+              aria-atomic="true"
+              on:click={copyEmail}
+            >
+              {#if copied}
+                <Confirm />
+              {:else}
+                email me
+              {/if}
+            </button>
+            <a
+              href="/cal"
+              class="cta-secondary smooth hover:border-[color:var(--accent)] hover:text-[color:var(--accent-strong)]"
+            >
+              Book a call on cal.com
+            </a>
+          </div>
+          <p class="text-sm font-semibold text-[color:var(--ink)]">
+            Local time: <span class="text-[color:var(--ink)]"><LiveTime /></span> (IST)
+          </p>
+        </div>
+        <div class="flex flex-col items-start gap-4 md:items-end">
+          <figure class="polaroid -rotate-2 smooth hover:rotate-0">
+            <span class="tape tape-left" aria-hidden="true"></span>
+            <span class="tape tape-right" aria-hidden="true"></span>
+            <img
+              src="/me.png"
+              alt="Current pfp of BlankParticle"
+              class="size-36 rounded-xl object-cover select-none sm:size-44"
+            />
+            <figcaption class="mt-3 text-right text-xs font-semibold text-[color:var(--ink-muted)]">
+              Rahul Mishra
+            </figcaption>
+          </figure>
+        </div>
+      </header>
 
-  <div class="flex w-full items-center justify-between gap-1">
-    <div class="flex flex-col text-xl">
-      <span class="font-semibold">Hello,</span>
-      <span>I'm Rahul Mishra</span>
-      <span class="text-sm font-bold text-pretty text-fuchsia-100/50"
-        >also known as <a href="/gh" class="underline decoration-dotted smooth hover:text-fuchsia-500/90"
-          >@blankparticle</a
-        > online</span
-      >
-      <span class="pt-1 text-sm font-semibold text-pretty text-fuchsia-100/50">
-        {new Date().getFullYear() - 2005} yo | Student | Software Developer at
-        <a
-          href="https://iterate.com"
-          class="underline decoration-dotted smooth hover:text-fuchsia-500/90"
-          target="_blank"
-          rel="noopener noreferrer">Iterate</a
-        >
-      </span>
-      <button
-        class="my-2 flex w-fit cursor-pointer items-center gap-1 text-lg font-bold text-fuchsia-500 underline decoration-dotted hover:text-glow-fuchsia-700"
-        aria-live="polite"
-        aria-atomic="true"
-        onclick={() => {
-          navigator.clipboard.writeText(`hello@${DOMAIN}`).then(() => {
-            copied = true;
-            setTimeout(() => {
-              copied = false;
-            }, 2000);
-          });
-        }}
-      >
-        {#if copied}
-          <span class="inline-flex items-center gap-1">Email copied!<Confirm /></span>
-        {:else}
-          email me 📪
-        {/if}
-      </button>
-      <span class="py-1 text-sm font-semibold text-pretty">
-        <a
-          href="/cal"
-          class="text-lg font-bold text-fuchsia-500 underline decoration-dotted hover:text-glow-fuchsia-700"
-        >
-          Book a call on cal.com
-        </a>
-      </span>
-    </div>
-    <div class="p-1 py-5">
-      <img
-        src="/me.png"
-        alt="Current pfp of BlankParticle"
-        class="max-size-20 aspect-square -rotate-12 drama-fuchsia-600/80 spring-duration-500 spring-bounce-40 drama-20 select-none hover:rotate-0 hover:drama-5 md:size-32 md:drama-28"
-      />
-    </div>
-  </div>
-
-  <div class="py-4">
-    <Terminal>
-      <Command>ssh blankparticle.com</Command>
-      <CommandOutput>Welcome to BlankParticle!</CommandOutput>
-      <CommandOutput>
-        <span class="flex items-center gap-2">
-          <span class="text-fuchsia-500 text-glow-fuchsia-500"><Spinner interval={150} /></span>
-          Time: <LiveTime /> (IST)
-        </span>
-      </CommandOutput>
-      <CommandOutput>Hope you had a nice day!</CommandOutput>
-      <div class="py-3"></div>
-      <Command>ls ~/Projects</Command>
-      <CommandOutput>
-        <div class="flex flex-col gap-3">
+      <section class="flex flex-col gap-6">
+        <div class="flex flex-wrap items-baseline justify-between gap-4">
+          <h2 class="text-2xl font-[var(--font-display)] sm:text-3xl">Some projects</h2>
+          <span class="ink-label text-xs uppercase">things I built</span>
+        </div>
+        <div class="grid gap-4 md:grid-cols-2">
           {#each data.projects as project}
             <a
-              class="flex flex-col gap-1 rounded-lg border border-slate-800 p-3 smooth hover:border-glow-fuchsia-600 hover:border-fuchsia-500"
+              class="note-card flex flex-col gap-2 p-4 smooth hover:-translate-y-1 hover:shadow-[0_18px_30px_rgba(42,42,42,0.16)]"
               href={project.url}
               target="_blank"
               rel="noopener noreferrer"
             >
-              <span class="font-bold">{project.title}</span>
-              <span class="text-sm font-semibold text-pretty text-fuchsia-400">{project.description}</span>
+              <span class="text-lg font-semibold text-[color:var(--ink)]">{project.title}</span>
+              <span class="text-sm text-[color:var(--ink-muted)]">{project.description}</span>
+              <span class="mt-2 text-xs font-semibold text-[color:var(--accent-strong)]"> Open project → </span>
             </a>
           {/each}
         </div>
-      </CommandOutput>
-      <div class="py-3"></div>
-      <Command>cat ~/socials.json</Command>
-      <CommandOutput>
-        <div class="flex flex-wrap gap-2">
-          <span class="rounded-lg border border-slate-800 p-2 smooth">
-            <span class="text-sm font-bold text-fuchsia-400">[</span>
-          </span>
-          {#each Object.entries(socials) as [link, name], i}
+      </section>
+
+      <section class="flex flex-col gap-5">
+        <div class="flex flex-wrap items-baseline justify-between gap-4">
+          <h2 class="text-2xl font-[var(--font-display)] sm:text-3xl">Find me around</h2>
+          <span class="ink-label text-xs uppercase">social links</span>
+        </div>
+        <div class="flex flex-wrap gap-3">
+          {#each Object.entries(socials) as [link, name]}
             <a
-              class="rounded-lg border border-slate-800 p-2 smooth hover:border-glow-fuchsia-600 hover:border-fuchsia-500"
+              class="note-card px-4 py-2 text-sm font-semibold text-[color:var(--ink)] smooth hover:-translate-y-0.5 hover:border-[color:var(--accent)]"
               href={`/${link}`}
               target="_blank"
               rel="noopener noreferrer"
             >
-              <span class="text-sm font-bold text-fuchsia-400"
-                >"{name}"{i === Object.keys(socials).length - 1 ? "" : ","}</span
-              >
+              {name}
             </a>
           {/each}
-          <span class="rounded-lg border border-slate-800 p-2 smooth">
-            <span class="text-sm font-bold text-fuchsia-400">]</span>
-          </span>
         </div>
-      </CommandOutput>
-      <div class="py-3"></div>
-      <Command>exit</Command>
-    </Terminal>
-  </div>
+      </section>
 
-  <div class="py-4">
-    <Command>node ./footer.tsx</Command>
-    <div class="flex w-full flex-wrap items-center justify-between gap-1 py-4">
-      <div class="text-xs font-bold text-fuchsia-100/50">
-        <a
-          href="/gh/www"
-          class="underline decoration-dotted smooth hover:text-fuchsia-500/90 hover:text-glow-fuchsia-700"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Made with 💚 by BlankParticle
-        </a>
-      </div>
-      <div class="text-xs font-bold text-fuchsia-100/50">
-        <a
-          href="https://svelte.dev"
-          class="underline decoration-dotted smooth hover:text-fuchsia-500/90 hover:text-glow-fuchsia-700"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+      <footer
+        class="flex flex-wrap items-center justify-between gap-3 border-t border-[color:var(--line)] pt-6 text-xs text-[color:var(--ink-muted)]"
+      >
+        <a href="/gh/www" class="ink-link" target="_blank" rel="noopener noreferrer"> Made with 💚 by BlankParticle </a>
+        <a href="https://svelte.dev" class="ink-link" target="_blank" rel="noopener noreferrer">
           🍀 Powered by SvelteKit
         </a>
-      </div>
+      </footer>
     </div>
   </div>
 </main>

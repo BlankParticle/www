@@ -8,8 +8,14 @@ importers:
 
   .:
     devDependencies:
-      '@fontsource-variable/jetbrains-mono':
-        specifier: ^5.2.8
+      '@fontsource/caveat':
+        specifier: ^5.2.7
+        version: 5.2.8
+      '@fontsource/source-sans-3':
+        specifier: ^5.2.7
+        version: 5.2.9
+      '@fontsource/stix-two-text':
+        specifier: ^5.2.7
         version: 5.2.8
       '@sveltejs/adapter-cloudflare':
         specifier: ^7.2.6
@@ -477,8 +483,14 @@ packages:
     resolution: {integrity: sha512-43/qtrDUokr7LJqoF2c3+RInu/t4zfrpYdoSDfYyhg52rwLV6TnOvdG4fXm7IkSB3wErkcmJS9iEhjVtOSEjjA==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
 
-  '@fontsource-variable/jetbrains-mono@5.2.8':
-    resolution: {integrity: sha512-WBA9elru6Jdp5df2mES55wuOO0WIrn3kpXnI4+W2ek5u3ZgLS9XS4gmIlcQhiZOWEKl95meYdvK7xI+ETLCq/Q==}
+  '@fontsource/caveat@5.2.8':
+    resolution: {integrity: sha512-9fUUfFE2IQFKbx+xOcaeQxxmh8iJguEb8z+j1PeueO4UUx+XfT4pRm/B04ZDvFA794/iRxY/IibmP8ZKtIf4rw==}
+
+  '@fontsource/source-sans-3@5.2.9':
+    resolution: {integrity: sha512-u3ymIq4rfmCCyB9MEw/sFR5lPVJ1yTNXmIMbUz+9kVCFIHvNtfzXOEBuvkg3Tk0zhmioPeJ28ZK5smZ7TurezQ==}
+
+  '@fontsource/stix-two-text@5.2.8':
+    resolution: {integrity: sha512-izSPaqTexWhwhY8jKHg3O9J4KeC2Q5hXkqYt+1Ak2a7POMZ9sJKVlqJYByfAjRR/Lnla9jFIwZf9XYbQG9GNfA==}
 
   '@humanfs/core@0.19.1':
     resolution: {integrity: sha512-5DyQ4+1JEUzejeK1JGICcideyfUbGixgS9jNgex5nqkW+cY7WZhxBigmieN5Qnw9ZosSNVC9KQKyb+GUaGyKUA==}
@@ -2105,7 +2117,11 @@ snapshots:
       '@eslint/core': 0.17.0
       levn: 0.4.1
 
-  '@fontsource-variable/jetbrains-mono@5.2.8': {}
+  '@fontsource/caveat@5.2.8': {}
+
+  '@fontsource/source-sans-3@5.2.9': {}
+
+  '@fontsource/stix-two-text@5.2.8': {}
 
   '@humanfs/core@0.19.1': {}
 
