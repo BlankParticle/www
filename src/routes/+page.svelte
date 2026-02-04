@@ -68,7 +68,7 @@
               href="/cal"
               class="cta-secondary smooth hover:border-[color:var(--accent)] hover:text-[color:var(--accent-strong)]"
             >
-              Book a call on cal.com
+              Book a call
             </a>
           </div>
           <p class="text-sm font-semibold text-[color:var(--ink)]">
@@ -76,7 +76,7 @@
           </p>
         </div>
         <div class="flex flex-col items-start gap-4 md:items-end">
-          <figure class="polaroid -rotate-2 smooth hover:rotate-0">
+          <figure class="polaroid -rotate-2">
             <span class="tape tape-left" aria-hidden="true"></span>
             <span class="tape tape-right" aria-hidden="true"></span>
             <img
