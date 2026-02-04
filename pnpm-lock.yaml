@@ -29,6 +29,9 @@ importers:
       '@tailwindcss/vite':
         specifier: 4.1.18
         version: 4.1.18(vite@7.3.1(@types/node@25.2.0)(jiti@2.6.1)(lightningcss@1.30.2)(yaml@2.6.1))
+      '@takumi-rs/image-response':
+        specifier: ^0.66.13
+        version: 0.66.13
       '@types/node':
         specifier: ^25.2.0
         version: 25.2.0
@@ -53,6 +56,9 @@ importers:
       prettier-plugin-tailwindcss:
         specifier: ^0.7.2
         version: 0.7.2(prettier-plugin-svelte@3.4.1(prettier@3.8.1)(svelte@5.49.1))(prettier@3.8.1)
+      react:
+        specifier: ^19.2.4
+        version: 19.2.4
       svelte:
         specifier: ^5.49.1
         version: 5.49.1
@@ -943,6 +949,67 @@ packages:
     peerDependencies:
       vite: ^5.2.0 || ^6 || ^7
 
+  '@takumi-rs/core-darwin-arm64@0.66.13':
+    resolution: {integrity: sha512-iHkHk3yQJTkXR8Li56O+V6DpSlMSSG8BKUOEFxqvSni9RaNbef/p6TL6+eSEZG1RjjtMmE8EGmO5WosdBWaO8g==}
+    engines: {node: '>= 12.22.0 < 13 || >= 14.17.0 < 15 || >= 15.12.0 < 16 || >= 16.0.0'}
+    cpu: [arm64]
+    os: [darwin]
+
+  '@takumi-rs/core-darwin-x64@0.66.13':
+    resolution: {integrity: sha512-AaSXvBm+Ztcxw1QVf9cwIfqV2oIZxXhbItUKuI74jarfhQhQSTg1/U2ehDKGc6wivSbRMHIoNlAI5lZhr2vK9Q==}
+    engines: {node: '>= 12.22.0 < 13 || >= 14.17.0 < 15 || >= 15.12.0 < 16 || >= 16.0.0'}
+    cpu: [x64]
+    os: [darwin]
+
+  '@takumi-rs/core-linux-arm64-gnu@0.66.13':
+    resolution: {integrity: sha512-QhFN4TwqfxUU5Ae/hTkim7h1H025i5WP21owPjHHMIZiNdunOiTwG/sPRCRygYd+Tpa25yj0dQE6xtzbj6Et1Q==}
+    engines: {node: '>= 12.22.0 < 13 || >= 14.17.0 < 15 || >= 15.12.0 < 16 || >= 16.0.0'}
+    cpu: [arm64]
+    os: [linux]
+
+  '@takumi-rs/core-linux-arm64-musl@0.66.13':
+    resolution: {integrity: sha512-mCeW8XJzVNgHFHrLf09lU6v5QUklWhAj4SbmHWpWzlmlW9mTdtYNlm2urRgW2VK98lLtmRhCj0uPv7shGVMV6Q==}
+    engines: {node: '>= 12.22.0 < 13 || >= 14.17.0 < 15 || >= 15.12.0 < 16 || >= 16.0.0'}
+    cpu: [arm64]
+    os: [linux]
+
+  '@takumi-rs/core-linux-x64-gnu@0.66.13':
+    resolution: {integrity: sha512-2R2u/wS4FzOJMfTnvHismvdKS2lkkKjBPiVrGRH2uswiN1/zOMMI4+EwAOHD/gH4RnU9n4DE4bRF2j1XZweWdw==}
+    engines: {node: '>= 12.22.0 < 13 || >= 14.17.0 < 15 || >= 15.12.0 < 16 || >= 16.0.0'}
+    cpu: [x64]
+    os: [linux]
+
+  '@takumi-rs/core-linux-x64-musl@0.66.13':
+    resolution: {integrity: sha512-iiic9VBnV5o7pkYak6cw26I6lItfY8D8+mWlMqsHLkd+qsyvQhz5IP3kYdgoh8q96OREB+QxL9tU31thHl+vaA==}
+    engines: {node: '>= 12.22.0 < 13 || >= 14.17.0 < 15 || >= 15.12.0 < 16 || >= 16.0.0'}
+    cpu: [x64]
+    os: [linux]
+
+  '@takumi-rs/core-win32-arm64-msvc@0.66.13':
+    resolution: {integrity: sha512-UcY6+uJx5em1BvOdkK8fCN+74aETGCprgArlP6nfcazVqzitH+9H2+qScwweG5luqGIMQrsYWt+DH8m1m/ynGg==}
+    engines: {node: '>= 12.22.0 < 13 || >= 14.17.0 < 15 || >= 15.12.0 < 16 || >= 16.0.0'}
+    cpu: [arm64]
+    os: [win32]
+
+  '@takumi-rs/core-win32-x64-msvc@0.66.13':
+    resolution: {integrity: sha512-B8K7YuwLCTJAVkuUY/2R4BaidIdSKjzy8A7MxyQQnPIGiVReluvx2RgbI6Dvxw3A7CyuZ7ZNCpuXyoNq/bXl+g==}
+    engines: {node: '>= 12.22.0 < 13 || >= 14.17.0 < 15 || >= 15.12.0 < 16 || >= 16.0.0'}
+    cpu: [x64]
+    os: [win32]
+
+  '@takumi-rs/core@0.66.13':
+    resolution: {integrity: sha512-8EbaT3pWDO1SthnRB2bNAIIfjm+QCBP4rH8CLL5mfpq9K0flXoXUhTsb5NoiI8NYVjQ3bCpCM9X9O/fFIsPZOg==}
+    engines: {node: '>= 12.22.0 < 13 || >= 14.17.0 < 15 || >= 15.12.0 < 16 || >= 16.0.0'}
+
+  '@takumi-rs/helpers@0.66.13':
+    resolution: {integrity: sha512-biadw8A+5nqQurNSrHOfibzHPQUPQNj5UWcvoC/5pwUuNsybGpYSMwevgLYxH6Z5NhG2QjLxEw1GQz2sRy3R9A==}
+
+  '@takumi-rs/image-response@0.66.13':
+    resolution: {integrity: sha512-ReS0QABZI1BbCjlbzV9nUaaHF2AQ8SwNN8Vdm3C8kr1xeuH/N2zyLg7Oo6Wf04nWCwE61pjI/GvHS7trD/+qxg==}
+
+  '@takumi-rs/wasm@0.66.13':
+    resolution: {integrity: sha512-+MbS3CuO4AjKZ+up4CRC/erj/IPh6gJlhZytzzy5CBnkiEmnK6+v9qGwgWHaEjg3bl/xr/IBKWE1Es05vQ89Nw==}
+
   '@types/cookie@0.6.0':
     resolution: {integrity: sha512-4Kh9a6B2bQciAhf7FSuMRRkUWecJgJu9nPnx3yzpsfXX/c50REIqpHY4C82bXP90qrLtXtkDxTZosYO3UpOwlA==}
 
@@ -1619,6 +1686,10 @@ packages:
   punycode@2.3.1:
     resolution: {integrity: sha512-vYt7UD1U9Wg6138shLtLOvdAu+8DsC/ilFtEVHcH+wydcSpNE20AfSOduf6MkRFahL5FY7X1oU7nKVZFtfq8Fg==}
     engines: {node: '>=6'}
+
+  react@19.2.4:
+    resolution: {integrity: sha512-9nfp2hYpCwOjAN+8TZFGhtWEwgvWHXqESH8qT89AT/lWklpLON22Lc8pEtnpsZz7VmawabSU0gCjnj8aC0euHQ==}
+    engines: {node: '>=0.10.0'}
 
   readdirp@4.1.2:
     resolution: {integrity: sha512-GDhwkLfywWL2s6vEjyhri+eXmfH6j1L7JE27WhqLeYzoh/A3DBaYGEj2H/HFZCn/kMfim73FXxEJTw06WtxQwg==}
@@ -2466,6 +2537,51 @@ snapshots:
       tailwindcss: 4.1.18
       vite: 7.3.1(@types/node@25.2.0)(jiti@2.6.1)(lightningcss@1.30.2)(yaml@2.6.1)
 
+  '@takumi-rs/core-darwin-arm64@0.66.13':
+    optional: true
+
+  '@takumi-rs/core-darwin-x64@0.66.13':
+    optional: true
+
+  '@takumi-rs/core-linux-arm64-gnu@0.66.13':
+    optional: true
+
+  '@takumi-rs/core-linux-arm64-musl@0.66.13':
+    optional: true
+
+  '@takumi-rs/core-linux-x64-gnu@0.66.13':
+    optional: true
+
+  '@takumi-rs/core-linux-x64-musl@0.66.13':
+    optional: true
+
+  '@takumi-rs/core-win32-arm64-msvc@0.66.13':
+    optional: true
+
+  '@takumi-rs/core-win32-x64-msvc@0.66.13':
+    optional: true
+
+  '@takumi-rs/core@0.66.13':
+    optionalDependencies:
+      '@takumi-rs/core-darwin-arm64': 0.66.13
+      '@takumi-rs/core-darwin-x64': 0.66.13
+      '@takumi-rs/core-linux-arm64-gnu': 0.66.13
+      '@takumi-rs/core-linux-arm64-musl': 0.66.13
+      '@takumi-rs/core-linux-x64-gnu': 0.66.13
+      '@takumi-rs/core-linux-x64-musl': 0.66.13
+      '@takumi-rs/core-win32-arm64-msvc': 0.66.13
+      '@takumi-rs/core-win32-x64-msvc': 0.66.13
+
+  '@takumi-rs/helpers@0.66.13': {}
+
+  '@takumi-rs/image-response@0.66.13':
+    dependencies:
+      '@takumi-rs/core': 0.66.13
+      '@takumi-rs/helpers': 0.66.13
+      '@takumi-rs/wasm': 0.66.13
+
+  '@takumi-rs/wasm@0.66.13': {}
+
   '@types/cookie@0.6.0': {}
 
   '@types/estree@1.0.8': {}
@@ -3099,6 +3215,8 @@ snapshots:
   prettier@3.8.1: {}
 
   punycode@2.3.1: {}
+
+  react@19.2.4: {}
 
   readdirp@4.1.2: {}
 
