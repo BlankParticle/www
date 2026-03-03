@@ -1,11 +1,11 @@
 @import "tailwindcss";
-@import "@fontsource/stix-two-text/400.css";
-@import "@fontsource/stix-two-text/600.css";
-@import "@fontsource/stix-two-text/700.css";
-@import "@fontsource/source-sans-3/400.css";
-@import "@fontsource/source-sans-3/600.css";
-@import "@fontsource/source-sans-3/700.css";
-@import "@fontsource/caveat/500.css";
+@import "@fontsource/stix-two-text/latin-400.css";
+@import "@fontsource/stix-two-text/latin-600.css";
+@import "@fontsource/stix-two-text/latin-700.css";
+@import "@fontsource/source-sans-3/latin-400.css";
+@import "@fontsource/source-sans-3/latin-600.css";
+@import "@fontsource/source-sans-3/latin-700.css";
+@import "@fontsource/caveat/latin-500.css";
 
 @plugin "tailwindcss-spring";
 
@@ -65,115 +65,5 @@
     --peach: #e6d3b1;
     --line: rgba(42, 42, 42, 0.08);
     --shadow: 0 30px 70px rgba(42, 42, 42, 0.18);
-  }
-}
-
-@utility smooth {
-  @apply transition-all duration-500 ease-in-out;
-}
-
-@layer components {
-  .notebook-sheet {
-    position: relative;
-    background-color: var(--paper);
-    background-image: repeating-linear-gradient(
-      to bottom,
-      transparent 0,
-      transparent 26px,
-      var(--line) 27px,
-      var(--line) 28px
-    );
-    border: 1px solid rgba(42, 42, 42, 0.1);
-    border-radius: 32px;
-    box-shadow: var(--shadow);
-  }
-
-  .notebook-sheet::before {
-    content: "";
-    position: absolute;
-    inset: 0 auto 0 0;
-    width: 72px;
-    background: rgba(125, 154, 124, 0.08);
-    border-right: 1px solid rgba(42, 42, 42, 0.12);
-    pointer-events: none;
-  }
-
-  .ink-label {
-    font-family: var(--font-note);
-    color: var(--ink-muted);
-    letter-spacing: 0.04em;
-  }
-
-  .ink-link {
-    color: var(--accent-strong);
-    text-decoration: underline;
-    text-decoration-style: dashed;
-    text-underline-offset: 4px;
-    text-decoration-thickness: 1.5px;
-  }
-
-  .summary-pill {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    border-radius: 999px;
-    background: color-mix(in srgb, var(--peach) 85%, #fff);
-    padding: 6px 14px;
-    font-weight: 600;
-  }
-
-  .polaroid {
-    position: relative;
-    background: #fff;
-    border: 1px solid rgba(42, 42, 42, 0.12);
-    border-radius: 18px;
-    padding: 14px 14px 20px;
-    box-shadow: 0 18px 40px rgba(42, 42, 42, 0.18);
-  }
-
-  .tape {
-    position: absolute;
-    width: 46px;
-    height: 16px;
-    background: rgba(230, 211, 177, 0.55);
-    border: 1px solid rgba(42, 42, 42, 0.08);
-    border-radius: 6px;
-    box-shadow: 0 6px 12px rgba(42, 42, 42, 0.15);
-  }
-
-  .tape-left {
-    top: -8px;
-    left: 12px;
-    transform: rotate(-4deg);
-  }
-
-  .tape-right {
-    top: -8px;
-    right: 10px;
-    transform: rotate(4deg);
-  }
-
-  .note-card {
-    background: rgba(255, 255, 255, 0.7);
-    border: 1px solid rgba(42, 42, 42, 0.1);
-    border-radius: 20px;
-    box-shadow: 0 12px 24px rgba(42, 42, 42, 0.12);
-  }
-
-  .cta-primary {
-    background: var(--accent);
-    color: #f9f6f0;
-    border-radius: 999px;
-    padding: 10px 18px;
-    font-weight: 700;
-  }
-
-  .cta-secondary {
-    border: 1px solid rgba(42, 42, 42, 0.18);
-    border-radius: 999px;
-    padding: 10px 18px;
-    font-weight: 600;
-    color: var(--ink);
-    background: rgba(255, 255, 255, 0.6);
   }
 }
