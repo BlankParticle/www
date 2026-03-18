@@ -7,4 +7,7 @@ export default defineConfig({
   server: {
     allowedHosts: ["anna"],
   },
+  resolve: {
+    tsconfigPaths: true,
+  },
 });

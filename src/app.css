@@ -18,12 +18,11 @@
 
 @layer base {
   html {
-    @apply scroll-smooth antialiased;
-    font-family: var(--font-body);
-    color: var(--ink);
+    @apply scroll-smooth font-(--font-body) text-(--ink) antialiased;
   }
+
   body {
-    @apply text-[color:var(--ink)];
+    @apply text-(--ink);
     background-color: #efe6da;
     background-image:
       radial-gradient(circle at top left, rgba(230, 211, 177, 0.4), transparent 55%),

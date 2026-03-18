@@ -35,22 +35,20 @@
 
 <main class="mx-auto max-w-5xl px-4 py-10 sm:py-16">
   <div
-    class="relative overflow-hidden rounded-[32px] border border-[rgba(42,42,42,0.1)] bg-(--paper) [background-image:repeating-linear-gradient(to_bottom,transparent_0,transparent_26px,var(--line)_27px,var(--line)_28px)] px-6 py-10 shadow-(--shadow) before:pointer-events-none before:absolute before:inset-y-0 before:left-0 before:w-[72px] before:rounded-l-[32px] before:border-r before:border-r-[rgba(42,42,42,0.12)] before:bg-[rgba(125,154,124,0.08)] sm:px-12 sm:py-14"
+    class="relative overflow-hidden rounded-[32px] border border-[rgba(42,42,42,0.1)] bg-(--paper) bg-[repeating-linear-gradient(to_bottom,transparent_0,transparent_26px,var(--line)_27px,var(--line)_28px)] px-6 py-10 shadow-(--shadow) before:pointer-events-none before:absolute before:inset-y-0 before:left-0 before:w-[72px] before:rounded-l-[32px] before:border-r before:border-r-[rgba(42,42,42,0.12)] before:bg-[rgba(125,154,124,0.08)] sm:px-12 sm:py-14"
   >
     <div class="relative z-10 flex flex-col gap-12 pl-16 sm:pl-20">
       <header class="flex flex-col gap-10 md:flex-row md:items-start md:justify-between">
         <div class="flex flex-col gap-4">
-          <span class="font-[family-name:var(--font-note)] text-sm tracking-[0.04em] text-(--ink-muted)"
-            >blankparticle.com</span
-          >
+          <span class="font-note text-sm tracking-[0.04em] text-(--ink-muted)">blankparticle.com</span>
           <div class="flex flex-col gap-2">
             <span class="text-lg font-semibold text-(--ink-muted)">Hello,</span>
-            <h1 class="font-[family-name:var(--font-display)] text-4xl sm:text-5xl">I'm Rahul Mishra</h1>
+            <h1 class="font-display text-4xl sm:text-5xl">I'm Rahul Mishra</h1>
             <p class="text-sm text-(--ink-muted) italic">
               also known as
               <a
                 href="/gh"
-                class="text-(--accent-strong) underline decoration-dashed [text-decoration-thickness:1.5px] underline-offset-4"
+                class="text-(--accent-strong) underline decoration-dashed decoration-[1.5px] underline-offset-4"
                 >@blankparticle</a
               >
               online
@@ -62,7 +60,7 @@
             {age} yo | Software Developer at
             <a
               href="https://iterate.com"
-              class="text-(--accent-strong) underline decoration-dashed [text-decoration-thickness:1.5px] underline-offset-4"
+              class="text-(--accent-strong) underline decoration-dashed decoration-[1.5px] underline-offset-4"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -118,10 +116,8 @@
 
       <section class="flex flex-col gap-6">
         <div class="flex flex-wrap items-baseline justify-between gap-4">
-          <h2 class="font-[family-name:var(--font-display)] text-2xl sm:text-3xl">Some projects</h2>
-          <span class="font-[family-name:var(--font-note)] text-xs tracking-[0.04em] text-(--ink-muted) uppercase"
-            >things I built</span
-          >
+          <h2 class="font-display text-2xl sm:text-3xl">Some projects</h2>
+          <span class="font-note text-xs tracking-[0.04em] text-(--ink-muted) uppercase">things I built</span>
         </div>
         <div class="grid gap-4 md:grid-cols-2">
           {#each data.projects as project}
@@ -141,10 +137,8 @@
 
       <section class="flex flex-col gap-5">
         <div class="flex flex-wrap items-baseline justify-between gap-4">
-          <h2 class="font-[family-name:var(--font-display)] text-2xl sm:text-3xl">Find me around</h2>
-          <span class="font-[family-name:var(--font-note)] text-xs tracking-[0.04em] text-(--ink-muted) uppercase"
-            >social links</span
-          >
+          <h2 class="font-display text-2xl sm:text-3xl">Find me around</h2>
+          <span class="font-note text-xs tracking-[0.04em] text-(--ink-muted) uppercase">social links</span>
         </div>
         <div class="flex flex-wrap gap-3">
           {#each Object.entries(socials) as [link, name]}
@@ -165,7 +159,7 @@
       >
         <a
           href="/gh/www"
-          class="text-(--accent-strong) underline decoration-dashed [text-decoration-thickness:1.5px] underline-offset-4"
+          class="text-(--accent-strong) underline decoration-dashed decoration-[1.5px] underline-offset-4"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -173,7 +167,7 @@
         </a>
         <a
           href="https://svelte.dev"
-          class="text-(--accent-strong) underline decoration-dashed [text-decoration-thickness:1.5px] underline-offset-4"
+          class="text-(--accent-strong) underline decoration-dashed decoration-[1.5px] underline-offset-4"
           target="_blank"
           rel="noopener noreferrer"
         >
