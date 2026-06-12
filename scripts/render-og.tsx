@@ -3,7 +3,6 @@ import React from "react";
 import { ImageResponse } from "@takumi-rs/image-response";
 
 const DOMAIN = "blankparticle.com";
-const EMAIL = `hello@${DOMAIN}`;
 const PROFILE_PATH = new URL("../static/me.png", import.meta.url);
 const profileDataUrl = `data:image/png;base64,${fs.readFileSync(PROFILE_PATH).toString("base64")}`;
 
@@ -11,38 +10,37 @@ const DEVICE_PIXEL_RATIO = 2.5;
 const WIDTH = 1200;
 const HEIGHT = 630;
 
+// hex versions of the OKLCH tokens in app.css
+const ink = {
+  paper: "#f8f9f5",
+  text: "#292333",
+  muted: "#5a5467",
+  violet: "#682dac",
+  orange: "#f3680f",
+  orangeDeep: "#ae3200",
+  lime: "#ccf77a",
+};
+
 const readFont = (relativePath: string) => fs.readFileSync(new URL(relativePath, import.meta.url));
 
 const fonts = [
   {
-    name: "STIX Two Text",
-    data: readFont("../node_modules/@fontsource/stix-two-text/files/stix-two-text-latin-700-normal.woff2"),
+    name: "Bricolage Grotesque",
+    data: readFont("../node_modules/@fontsource/bricolage-grotesque/files/bricolage-grotesque-latin-800-normal.woff2"),
     style: "normal" as const,
-    weight: 700,
+    weight: 800,
   },
   {
-    name: "STIX Two Text",
-    data: readFont("../node_modules/@fontsource/stix-two-text/files/stix-two-text-latin-600-normal.woff2"),
-    style: "normal" as const,
-    weight: 600,
-  },
-  {
-    name: "Source Sans 3",
-    data: readFont("../node_modules/@fontsource/source-sans-3/files/source-sans-3-latin-400-normal.woff2"),
+    name: "Karla",
+    data: readFont("../node_modules/@fontsource/karla/files/karla-latin-400-normal.woff2"),
     style: "normal" as const,
     weight: 400,
   },
   {
-    name: "Source Sans 3",
-    data: readFont("../node_modules/@fontsource/source-sans-3/files/source-sans-3-latin-600-normal.woff2"),
+    name: "Karla",
+    data: readFont("../node_modules/@fontsource/karla/files/karla-latin-700-normal.woff2"),
     style: "normal" as const,
-    weight: 600,
-  },
-  {
-    name: "Caveat",
-    data: readFont("../node_modules/@fontsource/caveat/files/caveat-latin-500-normal.woff2"),
-    style: "normal" as const,
-    weight: 500,
+    weight: 700,
   },
 ];
 
@@ -53,142 +51,101 @@ const OgImage = () => (
       height: HEIGHT,
       position: "relative",
       overflow: "hidden",
-      boxSizing: "border-box",
-      color: "#2a2a2a",
-      backgroundColor: "#f7f0e8",
-      backgroundImage:
-        "radial-gradient(circle at 0% 0%, rgba(230, 211, 177, 0.6), transparent 58%), radial-gradient(circle at 100% 100%, rgba(125, 154, 124, 0.45), transparent 60%), linear-gradient(180deg, rgba(247, 240, 232, 1), rgba(239, 230, 218, 0.94))",
+      display: "flex",
+      flexDirection: "column",
+      color: ink.text,
+      backgroundColor: ink.paper,
+      fontFamily: "Karla",
     }}
   >
     <div
       style={{
-        position: "absolute",
-        inset: 0,
-        backgroundImage:
-          "linear-gradient(to bottom, rgba(42, 42, 42, 0.08) 0, rgba(42, 42, 42, 0.08) 2px, rgba(42, 42, 42, 0) 2px, rgba(42, 42, 42, 0) 34px)",
-        backgroundSize: "100% 34px",
-        backgroundRepeat: "repeat",
-        opacity: 0.7,
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "space-between",
+        margin: "0 64px",
+        padding: "26px 0",
+        borderBottom: `3px dashed rgba(104, 45, 172, 0.35)`,
+        fontSize: 22,
+        fontWeight: 700,
+        letterSpacing: 4,
+        color: ink.violet,
       }}
-    />
+    >
+      <div>{DOMAIN.toUpperCase()}</div>
+      <div style={{ color: ink.orangeDeep }}>EST. 2005 · 100% HANDMADE</div>
+    </div>
 
     <div
       style={{
-        position: "relative",
-        zIndex: 2,
+        flex: 1,
         display: "flex",
-        gap: 70,
-        width: "100%",
-        height: "100%",
         alignItems: "center",
         justifyContent: "space-between",
-        padding: "70px 84px",
-        boxSizing: "border-box",
+        padding: "0 64px",
+        gap: 60,
       }}
     >
-      <div style={{ display: "flex", flexDirection: "column", gap: 16, maxWidth: 640 }}>
+      <div style={{ display: "flex", flexDirection: "column", gap: 20, maxWidth: 680 }}>
+        <div style={{ fontSize: 30, fontWeight: 700, color: ink.muted, letterSpacing: 1 }}>Hello, I'm</div>
         <div
           style={{
-            fontFamily: "Source Sans 3",
-            fontSize: 24,
-            letterSpacing: 3,
-            textTransform: "uppercase",
-            color: "#6b645c",
-          }}
-        >
-          {DOMAIN.toUpperCase()}
-        </div>
-        <div
-          style={{
-            fontFamily: "STIX Two Text",
-            fontSize: 84,
-            fontWeight: 700,
-            lineHeight: 1.02,
-            marginTop: 6,
+            fontFamily: "Bricolage Grotesque",
+            fontSize: 110,
+            fontWeight: 800,
+            lineHeight: 0.95,
+            letterSpacing: -2,
+            color: ink.violet,
           }}
         >
           Rahul Mishra
         </div>
-        <div
-          style={{
-            fontFamily: "Source Sans 3",
-            fontSize: 30,
-            fontWeight: 600,
-            color: "#6b645c",
-          }}
-        >
-          Software Developer at Iterate
+        <div style={{ display: "flex", alignItems: "center", gap: 12, fontSize: 30, color: ink.muted }}>
+          <span>also known as</span>
+          <span
+            style={{
+              backgroundColor: ink.lime,
+              color: ink.text,
+              fontWeight: 700,
+              padding: "2px 10px",
+              transform: "rotate(-1deg)",
+            }}
+          >
+            @blankparticle
+          </span>
         </div>
-        <div
-          style={{
-            fontFamily: "Source Sans 3",
-            fontSize: 24,
-            color: "#6b645c",
-          }}
-        >
-          also known as @blankparticle
-        </div>
-        <div
-          style={{
-            fontFamily: "Caveat",
-            fontSize: 36,
-            fontWeight: 500,
-            color: "#5f7d63",
-            marginTop: 10,
-          }}
-        >
-          {EMAIL}
+        <div style={{ fontSize: 30, color: ink.muted }}>
+          software developer at <span style={{ fontWeight: 700, color: ink.orangeDeep }}>Iterate</span>
         </div>
       </div>
 
-      <div
-        style={{
-          width: 300,
-          height: 360,
-          background: "#ffffff",
-          borderRadius: 24,
-          border: "1px solid rgba(42, 42, 42, 0.12)",
-          boxShadow: "0 20px 40px rgba(42, 42, 42, 0.2)",
-          position: "relative",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          transform: "rotate(-2deg)",
-        }}
-      >
-        <div
+      <div style={{ position: "relative", display: "flex", transform: "rotate(2deg)" }}>
+        <img
+          src={profileDataUrl}
           style={{
-            position: "absolute",
-            top: -12,
-            left: 60,
-            right: 60,
-            height: 22,
-            borderRadius: 8,
-            background: "rgba(230, 211, 177, 0.7)",
-            border: "1px solid rgba(42, 42, 42, 0.12)",
+            width: 300,
+            height: 300,
+            objectFit: "cover",
+            borderRadius: 32,
+            border: `10px solid ${ink.paper}`,
+            boxShadow: `0 0 0 4px ${ink.text}`,
           }}
         />
         <div
           style={{
-            width: 210,
-            height: 210,
-            borderRadius: 999,
-            background: "rgba(125, 154, 124, 0.12)",
-            border: "3px solid rgba(95, 125, 99, 0.65)",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            overflow: "hidden",
+            position: "absolute",
+            bottom: -18,
+            left: 70,
+            backgroundColor: ink.lime,
+            border: `4px solid ${ink.text}`,
+            padding: "4px 14px",
+            fontSize: 22,
+            fontWeight: 700,
+            letterSpacing: 3,
+            transform: "rotate(-3deg)",
           }}
         >
-          <img
-            src={profileDataUrl}
-            style={{
-              width: "100%",
-              height: "100%",
-              objectFit: "cover",
-            }}
-          />
+          THAT'S ME
         </div>
       </div>
     </div>

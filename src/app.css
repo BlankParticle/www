@@ -1,68 +1,69 @@
 @import "tailwindcss";
-@import "@fontsource/stix-two-text/latin-400.css";
-@import "@fontsource/stix-two-text/latin-600.css";
-@import "@fontsource/stix-two-text/latin-700.css";
-@import "@fontsource/source-sans-3/latin-400.css";
-@import "@fontsource/source-sans-3/latin-600.css";
-@import "@fontsource/source-sans-3/latin-700.css";
-@import "@fontsource/caveat/latin-500.css";
+@import "@fontsource/bricolage-grotesque/latin-700.css";
+@import "@fontsource/bricolage-grotesque/latin-800.css";
+@import "@fontsource/karla/latin-400.css";
+@import "@fontsource/karla/latin-400-italic.css";
+@import "@fontsource/karla/latin-700.css";
 
 @plugin "tailwindcss-spring";
 
 @theme {
-  --font-display: "STIX Two Text", "Times New Roman", serif;
-  --font-body: "Source Sans 3", "Helvetica Neue", Arial, sans-serif;
-  --font-note: "Caveat", "Segoe Print", "Comic Sans MS", cursive;
-  --animate-blink: blink 1s infinite;
+  --font-display: "Bricolage Grotesque", "Arial Black", sans-serif;
+  --font-body: "Karla", "Helvetica Neue", Arial, sans-serif;
+
+  /* two-ink risograph palette: violet + orange on bright paper */
+  --color-paper: oklch(98% 0.005 110);
+  --color-ink: oklch(27% 0.03 300);
+  --color-ink-muted: oklch(46% 0.03 300);
+  --color-violet: oklch(45% 0.19 300);
+  --color-violet-deep: oklch(37% 0.17 300);
+  --color-orange: oklch(68% 0.19 45);
+  --color-orange-deep: oklch(50% 0.17 40);
+  --color-lime: oklch(92% 0.16 125);
+
+  --animate-marquee: marquee 22s linear infinite;
+  --animate-reveal: reveal 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+
+  @keyframes marquee {
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  @keyframes reveal {
+    from {
+      opacity: 0;
+      transform: translateY(14px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 }
 
 @layer base {
   html {
-    @apply scroll-smooth font-(--font-body) text-(--ink) antialiased;
+    @apply scroll-smooth font-body text-ink antialiased;
+    overflow-x: clip;
   }
 
   body {
-    @apply text-(--ink);
-    background-color: #efe6da;
-    background-image:
-      radial-gradient(circle at top left, rgba(230, 211, 177, 0.4), transparent 55%),
-      radial-gradient(circle at bottom right, rgba(125, 154, 124, 0.22), transparent 60%),
-      linear-gradient(180deg, rgba(239, 230, 218, 0.95), rgba(239, 230, 218, 0.9));
-    background-repeat: no-repeat;
-    background-size:
-      160% 160%,
-      160% 160%,
-      100% 100%;
-    background-position:
-      top left,
-      bottom right,
-      center;
-    min-height: 100vh;
+    @apply relative min-h-screen bg-paper;
   }
-  ::selection {
-    background-color: rgba(125, 154, 124, 0.25);
-  }
-  @keyframes blink {
-    0%,
-    100% {
-      opacity: 1;
-    }
-    50% {
-      opacity: 0;
-    }
-  }
-}
 
-@layer base {
-  :root {
-    --paper: #f7f0e8;
-    --paper-deep: #efe6da;
-    --ink: #2a2a2a;
-    --ink-muted: #6b645c;
-    --accent: #7d9a7c;
-    --accent-strong: #5f7d63;
-    --peach: #e6d3b1;
-    --line: rgba(42, 42, 42, 0.08);
-    --shadow: 0 30px 70px rgba(42, 42, 42, 0.18);
+  /* paper grain, one cheap SVG turbulence layer */
+  body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 50;
+    opacity: 0.05;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  ::selection {
+    @apply bg-orange text-paper;
   }
 }
