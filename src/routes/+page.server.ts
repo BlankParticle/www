@@ -20,7 +20,12 @@ export const load: ServerLoad = () => {
     {
       title: "gnome-bluetooth-quick-connect",
       description: "🔌 Allow to connect bluetooth paired devices from gnome control panel.",
-      url: "https://github.com/Extensions-Valhalla/gnome-bluetooth-quick-connect",
+      url: "/gh/gnome-bluetooth-quick-connect",
+    },
+    {
+      title: "portable",
+      description: "🚪 Run local apps behind the portable proxy, auto allocate ports, and expose friendly local hostnames",
+      url: "/gh/portable",
     },
   ];
 
