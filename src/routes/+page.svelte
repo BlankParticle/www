@@ -30,7 +30,6 @@
     "breaks things to fix them",
     "loves a good refactor",
     "ships it",
-    "keyboard enthusiast",
     "reads the source",
     "automates the boring",
     "late night commits",
