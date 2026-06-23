@@ -21,7 +21,7 @@
   --color-orange-deep: oklch(50% 0.17 40);
   --color-lime: oklch(92% 0.16 125);
 
-  --animate-marquee: marquee 22s linear infinite;
+  --animate-marquee: marquee 60s linear infinite;
   --animate-reveal: reveal 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
 
   @keyframes marquee {

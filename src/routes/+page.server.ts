@@ -3,9 +3,14 @@ import type { ServerLoad } from "@sveltejs/kit";
 export const load: ServerLoad = () => {
   const projects = [
     {
-      title: "safe-durable-objects",
-      description: "🔒 tRPC-style Safe RPC methods for Cloudflare Durable Objects",
-      url: "https://github.com/iterate-com/safe-durable-objects",
+      title: "gnome-bluetooth-quick-connect",
+      description: "🔌 Allow to connect bluetooth paired devices from gnome control panel.",
+      url: "/gh/gnome-bluetooth-quick-connect",
+    },
+    {
+      title: "portable",
+      description: "🚪 Run local apps behind the portable proxy, auto allocate ports, and expose friendly local hostnames",
+      url: "/gh/portable",
     },
     {
       title: "tailwind-plugin-realtime-colors",
@@ -18,14 +23,9 @@ export const load: ServerLoad = () => {
       url: "/gh/get-palette",
     },
     {
-      title: "gnome-bluetooth-quick-connect",
-      description: "🔌 Allow to connect bluetooth paired devices from gnome control panel.",
-      url: "/gh/gnome-bluetooth-quick-connect",
-    },
-    {
-      title: "portable",
-      description: "🚪 Run local apps behind the portable proxy, auto allocate ports, and expose friendly local hostnames",
-      url: "/gh/portable",
+      title: "safe-durable-objects",
+      description: "🔒 tRPC-style Safe RPC methods for Cloudflare Durable Objects",
+      url: "https://github.com/iterate-com/safe-durable-objects",
     },
   ];
 

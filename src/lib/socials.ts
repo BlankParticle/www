@@ -8,6 +8,7 @@ const redirectMap: Record<string, string> = {
   hashnode: "https://hashnode.com/@BlankParticle",
   discord: "https://discordapp.com/users/1096392763144159252",
   cal: "https://cal.com/blankparticle",
+  resume: "https://static.rx2.dev/docs/resume.pdf",
 };
 
 redirectMap.gh$ = redirectMap.github$;
@@ -15,13 +16,11 @@ redirectMap.x = redirectMap.twitter;
 
 const socials: Record<string, string> = {
   email: "Email",
-  gh: "GitHub",
   twitter: "Twitter",
+  discord: "Discord",
+  gh: "GitHub",
   blog: "Blog",
   linkedin: "LinkedIn",
-  spotify: "Spotify",
-  hashnode: "Hashnode",
-  discord: "Discord",
 };
 
 export { redirectMap, socials };

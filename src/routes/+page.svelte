@@ -1,13 +1,43 @@
-<script>
+<script lang="ts">
+  import type { PageData } from "./$types";
   import Confirm from "../icons/confirm.svelte";
   import LiveTime from "../components/live-time.svelte";
+  import PushButton from "../components/push-button.svelte";
+  import SocialSticker from "../components/social-sticker.svelte";
+  import ContactDialog from "../components/contact-dialog.svelte";
+  import { copyText } from "../lib/clipboard";
   import { socials } from "../lib/socials";
+
   const DOMAIN = "blankparticle.com";
-  let copied = $state(false);
-  const { data } = $props();
+  const email = `hello@${DOMAIN}`;
+  const discordUser = "blankparticle";
+
+  let { data }: { data: PageData } = $props();
   const age = new Date().getFullYear() - 2005;
 
-  const tickerWords = ["curious", "tinkerer", "builds for fun", "open source", "probably debugging", "say hi"];
+  let emailCopied = $state(false);
+  let emailOpen = $state(false);
+  let discordOpen = $state(false);
+
+  const tickerWords = [
+    "curious",
+    "tinkerer",
+    "builds for fun",
+    "open source",
+    "probably debugging",
+    "say hi",
+    "always learning",
+    "breaks things to fix them",
+    "loves a good refactor",
+    "ships it",
+    "keyboard enthusiast",
+    "reads the source",
+    "automates the boring",
+    "late night commits",
+    "breaking things",
+    "shipping on fridays",
+    "fixing other people's problems",
+  ];
   const stickerTilts = [
     "-rotate-2",
     "rotate-1",
@@ -23,31 +53,6 @@
     "border-orange-deep text-orange-deep hover:bg-orange-deep hover:shadow-[4px_4px_0_var(--color-violet)]",
     "border-ink text-ink hover:bg-ink hover:shadow-[4px_4px_0_var(--color-orange)]",
   ];
-
-  const copyEmail = async () => {
-    const email = `hello@${DOMAIN}`;
-    try {
-      if (navigator.clipboard && window.isSecureContext) {
-        await navigator.clipboard.writeText(email);
-      } else {
-        const input = document.createElement("textarea");
-        input.value = email;
-        input.setAttribute("readonly", "true");
-        input.style.position = "absolute";
-        input.style.left = "-9999px";
-        document.body.appendChild(input);
-        input.select();
-        document.execCommand("copy");
-        document.body.removeChild(input);
-      }
-      copied = true;
-      setTimeout(() => {
-        copied = false;
-      }, 2000);
-    } catch (error) {
-      copied = false;
-    }
-  };
 </script>
 
 <main class="mx-auto max-w-4xl px-5 pb-16 sm:px-8">
@@ -89,25 +94,22 @@
       <div
         class="flex animate-reveal flex-wrap items-center gap-4 pt-2 [animation-delay:360ms] motion-reduce:animate-none"
       >
-        <button
-          type="button"
-          class="rounded-md border-2 border-ink bg-violet px-5 py-2.5 font-bold text-paper shadow-[4px_4px_0_var(--color-ink)] transition-transform duration-150 ease-out hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0_var(--color-ink)] active:translate-x-[4px] active:translate-y-[4px] active:shadow-none"
+        <PushButton
+          variant="violet"
           aria-live="polite"
           aria-atomic="true"
-          onclick={copyEmail}
+          onclick={() => copyText(email, (v) => (emailCopied = v))}
         >
-          {#if copied}
+          {#if emailCopied}
             <Confirm />
           {:else}
             email me
           {/if}
-        </button>
-        <a
-          href="/cal"
-          class="rounded-md border-2 border-orange-deep bg-paper px-5 py-2.5 font-bold text-orange-deep shadow-[4px_4px_0_var(--color-orange)] transition-transform duration-150 ease-out hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0_var(--color-orange)]"
-        >
-          book a call
-        </a>
+        </PushButton>
+        <PushButton href="/cal" variant="orange">book a call</PushButton>
+        <PushButton href="/resume" variant="violet-outline" target="_blank" rel="noopener noreferrer">
+          my resume
+        </PushButton>
       </div>
     </div>
 
@@ -194,15 +196,16 @@
       <span class="text-xs font-bold tracking-[0.18em] text-orange-deep uppercase">socials sheet</span>
     </div>
     <div class="flex flex-wrap gap-x-3 gap-y-4">
-      {#each Object.entries(socials) as [link, name], i}
-        <a
-          class={`rounded-full border-2 bg-paper px-4 py-1.5 text-sm font-bold shadow-[2px_2px_0_currentColor] transition-transform spring-duration-300 spring-bounce-60 hover:-translate-y-1 hover:scale-110 hover:rotate-0 hover:text-paper active:translate-y-0 active:scale-95 active:shadow-none ${stickerTilts[i % stickerTilts.length]} ${stickerInks[i % stickerInks.length]}`}
-          href={`/${link}`}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          {name}
-        </a>
+      {#each Object.entries(socials) as [link, name], i (link)}
+        {@const tilt = stickerTilts[i % stickerTilts.length]}
+        {@const ink = stickerInks[i % stickerInks.length]}
+        {#if link === "email"}
+          <SocialSticker {name} {tilt} {ink} onclick={() => (emailOpen = true)} />
+        {:else if link === "discord"}
+          <SocialSticker {name} {tilt} {ink} onclick={() => (discordOpen = true)} />
+        {:else}
+          <SocialSticker {name} {tilt} {ink} href={`/${link}`} />
+        {/if}
       {/each}
     </div>
   </section>
@@ -233,3 +236,21 @@
     </a>
   </footer>
 </main>
+
+<ContactDialog
+  bind:open={emailOpen}
+  title="Drop me a line"
+  description="Copy my email and reach out whenever you like."
+  value={email}
+  copyLabel="Copy email"
+/>
+
+<ContactDialog
+  bind:open={discordOpen}
+  title="Let's connect on Discord"
+  description="Add me as a friend with my username below."
+  value={discordUser}
+  copyLabel="Copy Discord username"
+  actionHref="/discord"
+  actionLabel="Open in Discord"
+/>
